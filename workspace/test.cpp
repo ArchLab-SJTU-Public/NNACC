@@ -2,6 +2,7 @@
 
 int main()
 {
+		printf("functional test");
     approximator app;
     app.init("sample.config");
     float in[2] = {1,1};
