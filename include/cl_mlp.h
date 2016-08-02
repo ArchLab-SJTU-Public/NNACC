@@ -33,7 +33,7 @@ public:
 	~cl_mlp();
 	int load(const char* file_path);
 	int run (const float* input, float* output);
-
+	void kernel_free();
 private:
 	float *h_net;
 	int *h_layer_dim;

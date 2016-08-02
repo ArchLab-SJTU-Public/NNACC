@@ -1,4 +1,4 @@
-#include "../include/cl_mlp.h"
+#include <cl_mlp.h>
 
 cl_program cl_mlp::load_program(cl_context context, const char* filename)
 {
@@ -169,7 +169,7 @@ int cl_mlp::load(const char* net_file)
 		return -1;
 	}
 	
-	program = load_program(context, "shader.cl");
+	program = load_program(context, "../backend/shader.cl");
 
 	if (program == 0) {
 		std::cerr << "Can't load or build program\n";
@@ -267,6 +267,10 @@ int cl_mlp::run(const float* input, float* output)
 		err = clEnqueueReadBuffer(queue, d_inter_res[0], CL_TRUE, 0, sizeof(float)*next_dim, output, 0, 0, 0);
 	}
 	return 0;
+}
+
+void cl_mlp::kernel_free()
+{
 }
 
 cl_mlp::~cl_mlp()

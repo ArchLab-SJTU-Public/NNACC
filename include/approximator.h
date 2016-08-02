@@ -13,6 +13,8 @@ class approximator{
     static const int MOD_CUDA = 1;
     static const int MOD_OPENCL = 2;
     static const string MOD_PATH_PREFIX;
+	static const string CONF_PATH_PREFIX;
+	static const string TRAIN_SCRIPT_PATH;
     approximator();
     void init(const char* file_path);
     void exec(float* input, float* output, int mod=0);

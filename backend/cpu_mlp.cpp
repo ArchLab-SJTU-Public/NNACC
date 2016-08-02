@@ -1,4 +1,4 @@
-#include "../include/cpu_mlp.h"
+#include <cpu_mlp.h>
 
 float cpu_mlp::non_linear(float x)
 {
@@ -129,6 +129,11 @@ int cpu_mlp::run(const float* input, float* output)
 	//#endif
 	return 0;
 }
+
+void cpu_mlp::kernel_free()
+{
+}
+
 
 cpu_mlp::~cpu_mlp()
 {

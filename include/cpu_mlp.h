@@ -18,7 +18,7 @@ public:
 
 	int load(const char* net_file);
 	int run(const float* input, float* output);
-
+	void kernel_free();
 private:
 	float *h_net;
 	int *h_layer_dim;

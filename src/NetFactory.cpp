@@ -90,16 +90,30 @@ net* NetFactory::getNet(const char* filepath, const int mod)
 
 }
 
-/*
+
 void NetFactory::netFree(){
-	for (map<string, mlp*>::iterator it = net_map.begin(); it != net_map.end(); it++) {
-		mlp* net = it->second;
-		net->kernel_free();
-		delete net;
+	for (map<string, net*>::iterator it = cpu_map.begin(); it != cpu_map.end(); it++) {
+		net* instance = it->second;
+		instance->kernel_free();
+		delete instance;
 	}
-	net_map.clear();
+	cpu_map.clear();
+
+	for (map<string, net*>::iterator it = cuda_map.begin(); it != cuda_map.end(); it++) {
+		net* instance = it->second;
+		instance->kernel_free();
+		delete instance;
+	}
+	cuda_map.clear();
+
+	for (map<string, net*>::iterator it = cl_map.begin(); it != cl_map.end(); it++) {
+		net* instance = it->second;
+		instance->kernel_free();
+		delete instance;
+	}
+	cl_map.clear();
 }
-*/
+
 
 NetFactory::NetFactory(){
 	//cout<<"net factory is created"<<endl;

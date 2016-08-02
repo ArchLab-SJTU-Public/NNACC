@@ -1,7 +1,8 @@
 #include <approximator.h>
 
 const string approximator::MOD_PATH_PREFIX = "../mod/";
-
+const string approximator::CONF_PATH_PREFIX = "../conf/";
+const string approximator::TRAIN_SCRIPT_PATH = "../py_Train/train.py";
 approximator::approximator()
 {}
 
@@ -13,9 +14,11 @@ void approximator::init(const char* file_path)
 {
 	cout<<"searching mod file:"<<endl;
     ifstream fin;
-    fin.open(file_path,ios::in);
+    fin.open((CONF_PATH_PREFIX+file_path).c_str(),ios::in);
     getline(fin,input_file_path);
+	input_file_path = CONF_PATH_PREFIX + input_file_path;
     getline(fin,output_file_path);
+	output_file_path = CONF_PATH_PREFIX + output_file_path;
     getline(fin,mod_file_path);
     mod_file_path = MOD_PATH_PREFIX+mod_file_path+".mod";
     fstream min(mod_file_path.c_str());
@@ -23,7 +26,7 @@ void approximator::init(const char* file_path)
     if(!min){
         cout<<"no mod file found!"<<endl;
 		cout<<"start training:"<<endl;
-        string str = "python train.py "+input_file_path+" "+output_file_path+" "+mod_file_path;
+        string str = "python " + TRAIN_SCRIPT_PATH + " " + input_file_path+" "+output_file_path+" "+mod_file_path;
         system(str.c_str());
 		cout<<"training done!"<<endl;        
     }
