@@ -27,10 +27,8 @@ input data, just call the exec method. whose interface is:<\br>
 int approximator::exec(float* input, float* output, int mod)
 ```
 the mod value indicate the execution backend, current the framework
-support CPU, cuda and OpenCL. To specify, you can use:<\br>
-`MOD_CPU`<\br>
-`MOD_CUDA`<\br>
-`MOD_OPENCL`<\br>
+support CPU, cuda and OpenCL. To specify, you can use:   
+`MOD_CPU`, `MOD_CUDA`, `MOD_OPENCL`    
 if you use backends like GPUs, the NN config actually need to be moved
 to the device memory to be executed. With our design, this data
 transfer will only happend once, thus eliminate the overhead of data
