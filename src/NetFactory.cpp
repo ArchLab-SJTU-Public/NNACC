@@ -40,7 +40,7 @@ net* NetFactory::getNet(const char* filepath, const int mod)
 
 	else if(mod == 1)
 	//means cuda
-	{/*
+	{
 		if(cuda_map.find(key) != cuda_map.end())
 		{
 			instance = cuda_map[key];
@@ -58,7 +58,7 @@ net* NetFactory::getNet(const char* filepath, const int mod)
 			}
 		}
 		return instance;
-*/
+
 	}
 
 	else if(mod == 2)
