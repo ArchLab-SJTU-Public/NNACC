@@ -1,0 +1,6 @@
+{
+  "name": "NNACC",
+  "tagline": "",
+  "body": "# NNACC\r\nAcceleration Framework Using NN Method\r\n\r\nWe designed this tool with intention to realize a functional interface for using NN algorithms: Just\r\nprovide a set of input-output data pairs as the behavior description of a\r\nmodule. Then the framework will automatically pick up an Neural Network\r\nconfiguration to fulfill your demand. With support from several backend(CPU, GPU, etc.), this framework can execute with satisfying speed.\r\n\r\nPresent this framework is rudimentary, we hope if more people hold the same perspective or just interested in this project and join us and make the contribution:)\r\n\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
