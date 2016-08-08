@@ -10,13 +10,13 @@ CUDA_DEPS =-L/usr/local/cuda/lib64/ -lcudart
 CL_DEPS =-L/usr/local/cuda/lib64/ -lOpenCL
 CL_HEAD = -I/usr/local/cuda/include/ 
 
-test:$(OBJS) $(BACKEND_OBJS) $(OBJDIR)
-	cd $(OBJDIR) && g++ $(OBJS) $(BACKEND_OBJS) $(CL_DEPS) $(CUDA_DEPS)  -o $@
+$(TARGET):$(OBJS) $(BACKEND_OBJS) $(OBJDIR)
+	cd $(OBJDIR) && g++ $(OBJS) $(BACKEND_OBJS) $(CL_DEPS) $(CUDA_DEPS) -o $@
 
 $(OBJDIR):
 	mkdir -p ./$@
 
-$(OBJS):%.o:%.cpp 
+$(OBJS):%.o:%.cpp $(OBJDIR)
 	$(CXX) -c -I$(INCLUDEDIR) $(CL_HEAD) $^ -o $@
 	mv $@ ./$(OBJDIR)
 
@@ -28,8 +28,8 @@ cpu_mlp.o:./backend/cpu_mlp.cpp $(OBJDIR)
 	$(CXX) -c -I$(INCLUDEDIR) $^ -o $@
 	mv $@ ./$(OBJDIR)
 
-cuda_mlp.o:./backend/cuda_mlp.cu $(OBJDIR)
-	nvcc -c  -I$(INCLUDEDIR) $(CL_HEAD) $<  -gencode arch=compute_52,code=sm_52 -o $@
+cuda_mlp.o:./backend/cuda_mlp.cu 
+	nvcc -c  -I$(INCLUDEDIR) $(CL_HEAD) $^  -gencode arch=compute_52,code=sm_52 -o $@
 	mv $@ ./$(OBJDIR)
 clean:
 	$(RM) $(OBJDIR)/*
