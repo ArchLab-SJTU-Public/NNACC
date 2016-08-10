@@ -6,7 +6,7 @@
 #include <string>
 #include "net.h"
 #include "cpu_mlp.h"
-//#include "cuda_mlp.h"
+#include "cuda_mlp.h"
 #include "cl_mlp.h"
 using namespace std;
 
